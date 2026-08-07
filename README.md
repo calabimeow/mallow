@@ -2,9 +2,13 @@
 Multi-media library written in C99 designed for game dev
 
 Features:
+
 -No external dependencies
+
 -Software rendering
+
 -Works on Windows and Linux
+
 
 Basic program example:
 ```c
