@@ -32,3 +32,8 @@ int main()
     }
 }
 ```
+## Builing:
+write `make windows` or `make linux` depending on your OS
+
+## Linking
+put the mallow.h, .dll or .so files in you project directory and run this command: `gcc main.c -o main -I"." -L"." -Wl,-rpath='.' -lmallow -lm`
