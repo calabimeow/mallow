@@ -1,5 +1,5 @@
 # mallow
-Multi-media library written in C99 designed for game dev
+Multimedia library written in C99 designed for game dev
 
 Features:
 
