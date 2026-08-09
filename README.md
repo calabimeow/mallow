@@ -36,4 +36,5 @@ int main()
 Write `make windows` or `make linux` depending on your OS. This will produce a shared library file in the source folder
 
 ## Linking
-Put mallow.h, mallow.dll or libmallow.so files in you project directory and run this command: `gcc main.c -o main -I"." -L"." -Wl,-rpath='.' -lmallow`
+Put mallow.h, mallow.dll or libmallow.so files in you project directory and run this command:
+`gcc main.c -o main -I"." -L"." -Wl,-rpath='.' -lmallow`
