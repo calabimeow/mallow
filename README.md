@@ -1,7 +1,7 @@
 # mallow
 Multimedia library written in C99 designed for game dev
 
-Features:
+## Features:
 
 -No external dependencies
 
@@ -10,7 +10,7 @@ Features:
 -Works on Windows and Linux
 
 
-Basic program example:
+## Basic program example:
 ```c
 #include <mallow.h>
 
