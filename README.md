@@ -19,7 +19,7 @@ Multimedia library written in C99 designed for game dev
 
 int main()
 {
-    init_window("<>", WIDTH, HEIGHT);
+    init_window(WIDTH, HEIGHT, "<>");
 
     while (!window_should_close())
     {
@@ -33,7 +33,7 @@ int main()
 }
 ```
 ## Builing:
-write `make windows` or `make linux` depending on your OS
+Write `make windows` or `make linux` depending on your OS. This will produce a dynamic library file in source folder
 
 ## Linking
-put the mallow.h, .dll or .so files in you project directory and run this command: `gcc main.c -o main -I"." -L"." -Wl,-rpath='.' -lmallow -lm`
+Put the mallow.h, .dll or .so files in you project directory and run this command: `gcc main.c -o main -I"." -L"." -Wl,-rpath='.' -lmallow -lm`
