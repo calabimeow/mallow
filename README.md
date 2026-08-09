@@ -5,6 +5,10 @@ Multimedia library written in C
 
 -No external dependencies
 
+-Keyboard and mouse input
+
+-Sound support
+
 -Software rendering
 
 -Works on Windows and Linux
