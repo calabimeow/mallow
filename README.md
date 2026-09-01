@@ -38,7 +38,7 @@ int main()
     }
 }
 ```
-## Builing:
+## Building:
 Write `make windows` or `make linux` depending on your OS. This will produce a shared library file in the source folder
 
 ## Linking
