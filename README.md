@@ -13,6 +13,8 @@ Multimedia library written in C
 
 -Works on Windows and Linux
 
+**Note:**
+this library is not done. Expect bugs
 
 ## Basic program example:
 ```c
