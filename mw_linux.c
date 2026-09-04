@@ -13,9 +13,9 @@ void lin_init_window(int width, int height, const char *title)
 {
     window_data = calloc(1, sizeof(mw_window_data));
 
-    window_data->canvas = calloc(1, sizeof(qtee_canvas));
-    window_data->canvas->width = width;
-    window_data->canvas->height = height;
+    window_data->texture = calloc(1, sizeof(qtee_texture));
+    window_data->texture->width = width;
+    window_data->texture->height = height;
 
     window_data->display = XOpenDisplay(NULL);
     window_data->screen = DefaultScreen(window_data->display);
@@ -41,7 +41,7 @@ void lin_init_window(int width, int height, const char *title)
         DefaultDepth(window_data->display, window_data->screen),
         ZPixmap,
         0,
-        (char*)window_data->canvas->pixels,
+        (char*)window_data->texture->pixels,
         width,
         height,
         32,
@@ -80,7 +80,7 @@ void lin_init_window(int width, int height, const char *title)
     shminfo->readOnly = False;
     XShmAttach(window_data->display, shminfo);
 
-    window_data->canvas->pixels = (uint32_t*)shminfo->shmaddr;
+    window_data->texture->pixels = (uint32_t*)shminfo->shmaddr;
 
     Atom wm_delete_window = XInternAtom(window_data->display, "WM_DELETE_WINDOW", False);
     XSetWMProtocols(window_data->display, window_data->window, &wm_delete_window, 1);
@@ -329,8 +329,8 @@ void lin_end_drawing()
         window_data->gc,
         window_data->image,
         0, 0, 0, 0,
-        window_data->canvas->width,
-        window_data->canvas->height,
+        window_data->texture->width,
+        window_data->texture->height,
         False
     );
 

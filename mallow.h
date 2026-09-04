@@ -2,10 +2,10 @@
 #define MALLOW_H
 
 #define MALLOW_VERSION_MAJOR 0
-#define MALLOW_VERSION_MINOR 1
+#define MALLOW_VERSION_MINOR 2
 #define MALLOW_VERSION_PATCH 0
 
-#if defined (_WIN32) | defined (_WIN64)
+#if defined (_WIN32) || defined (_WIN64)
     #define PLATFORM_WINDOWS
 
     #ifdef MALLOW_BUILD
@@ -44,17 +44,16 @@
 #define DEG2RAD (PI/180.0f)
 #define RAD2DEG (180.0f/PI)
 
-// mallow uses ARGB color format
-#define COLOR_WHITE   (0xFFFFFFFF)
-#define COLOR_BLACK   (0xFF000000)
-#define COLOR_RED     (0xFFFF0000)
-#define COLOR_YELLOW  (0xFFFFFF00)
-#define COLOR_GREEN   (0xFF00FF00)
-#define COLOR_BLUE    (0xFF0000FF)
-#define COLOR_CYAN    (0xFF00FFFF)
-#define COLOR_MAGENTA (0xFFFF00FF)
-#define COLOR_ORANGE  (0xFFFF8040)
-#define COLOR_PINK    (0xFFFF0080)
+#define COLOR_WHITE   0xFFFFFFFF
+#define COLOR_BLACK   0xFF000000
+#define COLOR_RED     0xFFFF0000
+#define COLOR_YELLOW  0xFFFFFF00
+#define COLOR_GREEN   0xFF00FF00
+#define COLOR_BLUE    0xFF0000FF
+#define COLOR_CYAN    0xFF00FFFF
+#define COLOR_MAGENTA 0xFFFF00FF
+#define COLOR_ORANGE  0xFFFF8040
+#define COLOR_PINK    0xFFFF0080
 
 typedef enum keyboard_key
 {
@@ -155,19 +154,18 @@ typedef enum mouse_button
     MOUSE_BUTTON_MIDDLE = 2
 }mouse_button;
 
-typedef struct texture
-{
-    size_t width, height;
-    uint32_t *pixels;
-}texture;
-
 typedef struct vec2 {float x, y;} vec2;
 typedef struct vec3 {float x, y, z;} vec3;
 
 typedef struct ma_sound ma_sound;
 typedef struct ma_engine ma_engine;
 
-typedef struct qtee_canvas qtee_canvas;
+typedef struct texture
+{
+    size_t width;
+    size_t height;
+    uint32_t *pixels;
+}texture;
 
 typedef struct sound
 {
@@ -200,8 +198,8 @@ MALAPI void clear_bg(uint32_t color);
 MALAPI void draw_rect(int x, int y, size_t w, size_t h, uint32_t color);
 MALAPI void draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, uint32_t color);
 MALAPI void draw_circle(int x, int y, size_t r, uint32_t color);
-MALAPI void draw_circle_outline(int x, int y, size_t r, int thick, uint32_t color);
-MALAPI void draw_text(const char *text, int x, int y, size_t size, uint32_t color);
+MALAPI void draw_text(char *text, int x, int y, size_t size, uint32_t color);
+MALAPI void draw_texture(texture tex, int x, int y, size_t w, size_t h);
 
 // camera
 MALAPI void start_2D(camera2D cam);
@@ -232,8 +230,8 @@ MALAPI void set_sound_volume(sound snd, float volume);
 MALAPI bool is_sound_playing(sound snd);
 
 // files
-MALAPI void write_ppm(const char *path, texture *texture);
-MALAPI texture load_texture(const char *path);
+//MALAPI void write_ppm(const char *path, texture *texture);
+MALAPI texture *load_texture(char *path);
 
 // math
 MALAPI float lerp(float start, float end, float amount);

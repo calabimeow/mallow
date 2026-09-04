@@ -8,11 +8,9 @@
     #include <windows.h>
 #endif
 
-typedef struct qtee_canvas qtee_canvas;
-
 typedef struct
 {   
-    qtee_canvas *canvas;
+    texture *texture;
     HWND hwnd;
     HWND parent;
     HINSTANCE instance;

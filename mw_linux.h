@@ -14,7 +14,7 @@
 
 typedef struct
 {
-    qtee_canvas *canvas;
+    texture *texture;
     Display *display;
     Window window;
     XEvent event;

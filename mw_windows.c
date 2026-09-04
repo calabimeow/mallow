@@ -24,7 +24,7 @@ static LRESULT CALLBACK window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM l
             mouse_pos_prev.y = mouse_pos.y;
             return 0;
         case WM_MOUSEWHEEL:
-            int mouse_wheel = GET_WHEEL_DELTA_WPARAM(wparam) / WHEEL_DELTA;
+            mouse_wheel = GET_WHEEL_DELTA_WPARAM(wparam) / WHEEL_DELTA;
             return 0;
         case WM_LBUTTONDOWN:
             window_data->mouse_buttons[MOUSE_BUTTON_LEFT] = true;
@@ -52,7 +52,6 @@ static LRESULT CALLBACK window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM l
             window_data->should_close = true;
             DestroyWindow(hwnd);
             return 0;
-
 
         case WM_KEYDOWN:
         {
@@ -175,10 +174,10 @@ void win_init_window(int width, int height, const char *title)
     bmi->bmiHeader.biCompression = BI_RGB;
     bmi->bmiHeader.biSizeImage = 0;
 
-    window_data->canvas = calloc(1, sizeof(qtee_canvas));
-    window_data->canvas->width = width;
-    window_data->canvas->height = height;
-    window_data->canvas->pixels = calloc(width * height, sizeof(uint32_t));
+    window_data->texture = calloc(1, sizeof(texture));
+    window_data->texture->width = width;
+    window_data->texture->height = height;
+    window_data->texture->pixels = calloc(width * height, sizeof(uint32_t));
 
     window_data->instance = GetModuleHandle(NULL);
 
@@ -245,9 +244,9 @@ void win_end_drawing()
     StretchDIBits
     (
         window_data->hdc,
-        0, 0, window_data->canvas->width, window_data->canvas->height,
-        0, 0, window_data->canvas->width, window_data->canvas->height,
-        window_data->canvas->pixels,
+        0, 0, window_data->texture->width, window_data->texture->height,
+        0, 0, window_data->texture->width, window_data->texture->height,
+        window_data->texture->pixels,
         window_data->bitmap_info,
         DIB_RGB_COLORS, 
         SRCCOPY
